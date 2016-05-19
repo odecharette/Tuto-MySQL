@@ -1,0 +1,26 @@
+BDD MySQL en local
+login : odc
+mdp : olivia
+serveur : localhost
+
+
+login : root
+mdp : <vide>
+
+se connecter :
+mysql -u odc -p --default-character-set=utf8;
+
+USE elevage
+
+LOAD DATA LOCAL INFILE 'C:/Users/Olivia/Documents/OpenClassrooms/Tuto MySQL/animal.txt'
+INTO TABLE Animal
+FIELDS TERMINATED BY ';'
+LINES TERMINATED BY '\n' -- ou '\r\n' selon l'ordinateur et le programme utilisés pour créer le fichier
+(espece, sexe, date_naissance, nom, commentaires);
+
+
+ select * from animal where (date_naissance >= '20100101' || (espece='chat' && sexe='M') || (espece='chat' && sexe='F' && date_naissance < '20070601'));
+
+
+SHOW tables;
+DESCRIBE animal;
